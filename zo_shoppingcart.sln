@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoOnlineStore", "ZoOnlineStore\ZoOnlineStore.csproj", "{20AA2409-2B0A-4C25-9221-73103E1F030A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoOnlineStore.Tests", "ZoOnlineStore.Tests\ZoOnlineStore.Tests.csproj", "{0A579B4A-321F-4F94-ADEA-FF2AAAC50254}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20AA2409-2B0A-4C25-9221-73103E1F030A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AA2409-2B0A-4C25-9221-73103E1F030A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AA2409-2B0A-4C25-9221-73103E1F030A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AA2409-2B0A-4C25-9221-73103E1F030A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A579B4A-321F-4F94-ADEA-FF2AAAC50254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A579B4A-321F-4F94-ADEA-FF2AAAC50254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A579B4A-321F-4F94-ADEA-FF2AAAC50254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A579B4A-321F-4F94-ADEA-FF2AAAC50254}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDEEE935-B269-4E25-BCBA-2C97E4FFE0B7}
+	EndGlobalSection
+EndGlobal
