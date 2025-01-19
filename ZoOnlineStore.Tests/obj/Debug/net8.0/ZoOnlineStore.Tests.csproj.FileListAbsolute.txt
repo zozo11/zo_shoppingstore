@@ -199,3 +199,12 @@
 /Users/zoe/Documents/donet/zo_shoppingcart/ZoOnlineStore.Tests/bin/Debug/net8.0/MockQueryable.EntityFrameworkCore.dll
 /Users/zoe/Documents/donet/zo_shoppingcart/ZoOnlineStore.Tests/bin/Debug/net8.0/MockQueryable.Moq.dll
 /Users/zoe/Documents/donet/zo_shoppingcart/ZoOnlineStore.Tests/bin/Debug/net8.0/Moq.dll
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/ZoOnlineStore.Tests.csproj.AssemblyReference.cache
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/ZoOnlineStore.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/ZoOnlineStore.Tests.AssemblyInfoInputs.cache
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/ZoOnlineStore.Tests.AssemblyInfo.cs
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/ZoOnlineStore.Tests.csproj.CoreCompileInputs.cache
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/ZoOnlineStore.Tests.sourcelink.json
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/ZoOnlineStore.Tests.dll
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/refint/ZoOnlineStore.Tests.dll
+/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore.Tests/obj/Debug/net8.0/ZoOnlineStore.Tests.pdb

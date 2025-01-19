@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZoOnlineStore.Data;
 
@@ -11,9 +12,11 @@ using ZoOnlineStore.Data;
 namespace ZoOnlineStore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250119025612_UpdateMigrationProductImage")]
+    partial class UpdateMigrationProductImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,9 +164,6 @@ namespace ZoOnlineStore.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("InventoryID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -186,9 +186,6 @@ namespace ZoOnlineStore.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("CategoryID");
-
-                    b.HasIndex("InventoryID")
-                        .IsUnique();
 
                     b.HasIndex("Name")
                         .HasDatabaseName("IX_Products_Name");
@@ -311,6 +308,17 @@ namespace ZoOnlineStore.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("ZoOnlineStore.Models.Inventory", b =>
+                {
+                    b.HasOne("ZoOnlineStore.Models.Product", "Product")
+                        .WithMany("Inventories")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ZoOnlineStore.Models.Order", b =>
                 {
                     b.HasOne("ZoOnlineStore.Models.User", "User")
@@ -349,15 +357,7 @@ namespace ZoOnlineStore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ZoOnlineStore.Models.Inventory", "Inventory")
-                        .WithOne("Product")
-                        .HasForeignKey("ZoOnlineStore.Models.Product", "InventoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("Inventory");
                 });
 
             modelBuilder.Entity("ZoOnlineStore.Models.ProductImage", b =>
@@ -389,12 +389,6 @@ namespace ZoOnlineStore.Migrations
                     b.Navigation("SubCategories");
                 });
 
-            modelBuilder.Entity("ZoOnlineStore.Models.Inventory", b =>
-                {
-                    b.Navigation("Product")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ZoOnlineStore.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
@@ -403,6 +397,8 @@ namespace ZoOnlineStore.Migrations
             modelBuilder.Entity("ZoOnlineStore.Models.Product", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("Inventories");
 
                     b.Navigation("OrderItems");
                 });

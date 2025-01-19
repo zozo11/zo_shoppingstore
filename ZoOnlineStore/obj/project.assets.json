@@ -10627,11 +10627,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/zoe/Documents/donet/zo_shoppingcart/ZoOnlineStore/ZoOnlineStore.csproj",
+      "projectUniqueName": "/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore/ZoOnlineStore.csproj",
       "projectName": "ZoOnlineStore",
-      "projectPath": "/Users/zoe/Documents/donet/zo_shoppingcart/ZoOnlineStore/ZoOnlineStore.csproj",
+      "projectPath": "/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore/ZoOnlineStore.csproj",
       "packagesPath": "/Users/zoe/.nuget/packages/",
-      "outputPath": "/Users/zoe/Documents/donet/zo_shoppingcart/ZoOnlineStore/obj/",
+      "outputPath": "/Users/zoe/Documents/donet/zo_shoppingcart/zo_shoppingstore/ZoOnlineStore/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/zoe/.nuget/NuGet/NuGet.Config"

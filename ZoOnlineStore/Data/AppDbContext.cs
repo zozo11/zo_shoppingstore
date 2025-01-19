@@ -13,8 +13,9 @@ public class AppDbContext : DbContext
     public required DbSet<Product> Products { get; set; }
     public required DbSet<Order> Orders { get; set; }
     public required DbSet<OrderItem> OrderItems { get; set; }
-    public required DbSet<Inventory> Inventories { get; set; }
+    public DbSet<Inventory> Inventories { get; set; }
     public required DbSet<Token> Tokens { get; set; }
+    public required DbSet<ProductImage> ProductImages { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -45,32 +46,31 @@ public class AppDbContext : DbContext
 
         modelBuilder.Entity<Inventory>()
             .HasOne(i => i.Product)
-            .WithMany(p => p.Inventories)
-            .HasForeignKey(i => i.ProductID);
+            .WithOne(p => p.Inventory)
+            .HasForeignKey<Inventory>(i => i.ProductID);
         
-        modelBuilder.Entity<Inventory>()
-            .HasOne(i => i.Product)
-            .WithMany(p => p.Inventories)
-            .HasForeignKey(i => i.ProductID);
-        
+        modelBuilder.Entity<Product>()
+            .HasOne(p => p.Inventory)
+            .WithOne(i => i.Product)
+            .HasForeignKey<Product>(p => p.InventoryID);
 
-         // 添加索引配置
+        //index
         modelBuilder.Entity<User>()
-            .HasIndex(u => u.Email) // 为 Email 添加唯一索引
+            .HasIndex(u => u.Email) // Email index
             .IsUnique();
 
         modelBuilder.Entity<Category>()
-            .HasIndex(c => c.Name); // 为 Category 的 Name 添加普通索引
+            .HasIndex(c => c.Name);
 
         modelBuilder.Entity<Product>()
-            .HasIndex(p => p.Name) // 为 Product 的 Name 添加索引
-            .HasDatabaseName("IX_Products_Name"); // 可指定索引名称
+            .HasIndex(p => p.Name) 
+            .HasDatabaseName("IX_Products_Name"); 
 
         modelBuilder.Entity<Product>()
-            .HasIndex(p => p.CategoryID); // 为 CategoryID 添加索引
+            .HasIndex(p => p.CategoryID); 
 
         modelBuilder.Entity<Order>()
-            .HasIndex(o => o.OrderNumber) // 为 OrderNumber 添加唯一索引
+            .HasIndex(o => o.OrderNumber)
             .IsUnique();
 
         modelBuilder.Entity<Order>()
@@ -101,5 +101,11 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Product>()
             .Property(p => p.Price)
             .HasPrecision(18, 2);
+
+        modelBuilder.Entity<ProductImage>()
+            .HasOne(pi => pi.Product)            // ProductImage has one Product
+            .WithMany(p => p.Images)      // Product has many ProductImages
+            .HasForeignKey(pi => pi.ProductID)   // Foreign key is ProductID
+            .OnDelete(DeleteBehavior.Cascade);  // Optional: Define delete behavior
     }
 }

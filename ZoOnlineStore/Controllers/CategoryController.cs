@@ -43,8 +43,11 @@ public class CategoryController : Controller
         }
         int totalRecord = await query.CountAsync();
 
-        var result = await query.Skip((dto.Page-1 * dto.PageSize)).Take(dto.PageSize).ToListAsync();
-
+        var result = await query
+        .Skip(((dto.Page ?? 1) - 1) * (dto.PageSize ?? 10))
+        .Take(dto.PageSize ?? 10)
+        .ToListAsync();
+        
         return Ok(new{
             TotalRecord = totalRecord,
             Page = dto.Page,
@@ -55,13 +58,13 @@ public class CategoryController : Controller
 
     [HttpPost("addcategory")]
     public async Task<IActionResult> AddCategory([FromBody] CategoriesDto dto){
-        // 判断 Name 是否为空
+        // Check Name is null
         if (string.IsNullOrEmpty(dto.Name))
         {
             return BadRequest("Category name is required.");
         }
 
-        // 查询是否已存在相同 Name 和 ParentID 的分类
+        // query same Name and ParentID category
         var existingCategory = await _context.Categories
                                 .FirstOrDefaultAsync(c=> c.Name == dto.Name && c.ParentID == dto.ParentID);
         
