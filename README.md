@@ -52,6 +52,15 @@ The database consists of 7 core tables:
 7. **Tokens** (Tokens Table):
    - Stores JWT tokens and their states.
 
+8. **ProductImages** (Product Image Table):
+   - Stores the image paths associated with each product.
+   - Fields:
+     - ID (Primary Key)
+     - ProductID (Foreign Key referencing Products)
+     - ImagePath (String: Path to the product image)
+     - Caption (Optional: Short description for the image)
+     - IsPrimary (Boolean: Indicates if the image is the main image for the product)
+     - IsThumbnailImage (Boolean: Indicates if the image is a thumbnail)
 ---
 
 ### Project Structure
@@ -70,13 +79,49 @@ The database consists of 7 core tables:
   - ASP.NET Core 8
 
 - **Database Management:**
-  - Entity Framework Core / LINQ
+  - Entity Framework Core
 
 - **Authentication:**
   - JSON Web Token (JWT)
 
 - **Dependency Injection:**
   - IOptions pattern for dynamic parameter configuration.
+
+---
+
+### LINQ Queries in Use
+
+The project extensively uses **LINQ** queries for efficient database operations. For example:
+
+#### 1. **Paginated Category Search**
+```csharp
+var query = _context.Categories.AsQueryable();
+
+if (dto.ID.HasValue)
+{
+    query = query.Where(c => c.ID == dto.ID || c.ParentID == dto.ID);
+}
+
+if (!string.IsNullOrEmpty(dto.Name))
+{
+    query = query.Where(c => c.Name.Contains(dto.Name));
+}
+
+int totalRecord = await query.CountAsync();
+
+var result = await query
+    .Skip((dto.Page - 1) * dto.PageSize)
+    .Take(dto.PageSize)
+    .ToListAsync();
+
+return Ok(new
+{
+    TotalRecord = totalRecord,
+    Page = dto.Page,
+    PageSize = dto.PageSize,
+    Data = result
+});
+```
 
 ---
 
@@ -179,6 +224,7 @@ This project is actively being developed with plans to include:
 ### Contact Information
 
 - **Project Lead:** Zoe
+- **Email:** [email@example.com]
 
 If you need additional details or have suggestions for the project, feel free to reach out!
 

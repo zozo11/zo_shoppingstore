@@ -9,12 +9,9 @@ using Azure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.VisualBasic;
 
-
 namespace ZoOnlineStore.Controllers;
-
+[Route("api/[controller]")]
 [ApiController]
-[Route("api/[product]")]
-
 public class ProductController : Controller
 {
     private readonly AppDbContext _context;
